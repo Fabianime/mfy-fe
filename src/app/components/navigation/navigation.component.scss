@@ -5,6 +5,10 @@ $generalPadding: 25px;
 .scrolled {
   background: rgb(17, 17, 17);
   opacity: 90%;
+
+  .sub-menu__content {
+    opacity: 1;
+  }
 }
 
 .navigation {
@@ -85,6 +89,7 @@ $generalPadding: 25px;
 
     display: none;
     background: rgb(17, 17, 17);
+    opacity: 0.9;
     position: absolute;
     min-width: 160px;
     z-index: 1;
