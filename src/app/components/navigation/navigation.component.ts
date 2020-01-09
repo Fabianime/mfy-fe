@@ -10,6 +10,11 @@ export class NavigationComponent implements OnInit {
   @Input() scrolled: boolean;
   isLanguageDropdownShow = false;
   currentLanguage: string;
+  languageList = [
+    { languageCode: 'gb', language: 'English' },
+    { languageCode: 'de', language: 'Deutsch' },
+    { languageCode: 'tr', language: 'Türkçe' },
+  ];
 
   constructor(private readonly translateService: TranslateService) {}
 
