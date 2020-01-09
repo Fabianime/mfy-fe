@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'mfy-fe';
+  scrolled = false;
 
   constructor(private translateService: TranslateService) {
     this.initI18n();

@@ -1,1 +1,11 @@
-{}
+{
+  "header": {
+    "headline": "MOBILITY FOR YOU",
+    "subHeadline": "Some random text to display"
+  },
+  "menu": {
+    "fleet": "FLEET",
+    "language": "LANGUAGE",
+    "contact": "CONTACT"
+  }
+}

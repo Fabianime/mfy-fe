@@ -1,0 +1,32 @@
+<nav [class.scrolled]="scrolled" class="navigation">
+  <a href="#">
+    <img src="assets/images/logo.png" alt="logo" class="logo" />
+  </a>
+  <div class="navigation-container">
+    <div class="navigation-child">
+      <a href="#">{{ 'menu.fleet' | translate }}</a>
+    </div>
+    <div class="navigation-child sub-menu language" (click)="openLanguageDropdown()">
+      <a appIcon="Earth" href="#">{{ 'menu.language' | translate }}</a>
+      <div class="sub-menu__content">
+        <div class="sub-menu__language" (click)="switchLanguage('en')">
+          <span class="flag-icon flag-icon-gb sub-menu__flag"></span>
+          <a [class.current-language]="currentLanguage === 'en'">{{ 'English' }}</a>
+        </div>
+        <div class="sub-menu__language" (click)="switchLanguage('de')">
+          <span class="flag-icon flag-icon-de sub-menu__flag"></span>
+          <a [class.current-language]="currentLanguage === 'de'">{{ 'Deutsch' }}</a>
+        </div>
+        <div class="sub-menu__language" (click)="switchLanguage('tr')">
+          <span class="flag-icon flag-icon-tr sub-menu__flag"></span>
+          <a [class.current-language]="currentLanguage === 'tr'">{{ 'Türkçe' }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="navigation-child-with-dropdown"></div>
+
+    <div class="navigation-child">
+      <a href="#">{{ 'menu.contact' | translate }}</a>
+    </div>
+  </div>
+</nav>

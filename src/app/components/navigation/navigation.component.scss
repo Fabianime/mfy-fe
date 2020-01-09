@@ -1,0 +1,121 @@
+@import '../../stylingVariables';
+
+$generalPadding: 25px;
+
+.scrolled {
+  background: rgb(17, 17, 17);
+  opacity: 90%;
+}
+
+.navigation {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  &-container {
+    float: right;
+    list-style: none;
+    padding: $generalPadding;
+    margin: 0;
+  }
+
+  &-child {
+    align-items: center;
+    float: left;
+    display: flex;
+    height: 24px;
+  }
+
+  &-child-with-dropdown {
+    align-items: center;
+    float: left;
+    display: flex;
+    height: 24px;
+  }
+
+  a {
+    font-size: 0.9em;
+    color: #fff;
+    text-decoration: none;
+    margin-left: $distance-between-menu-items;
+    display: block;
+
+    &:hover {
+      color: #3babed;
+    }
+  }
+}
+
+.logo {
+  height: 50px;
+  margin: 10px;
+  float: left;
+
+  &:before,
+  &:after {
+    position: absolute;
+    font-size: 7em;
+    font-weight: 300;
+    line-height: 0;
+    color: #fff;
+    top: $generalPadding;
+  }
+}
+
+.language {
+  margin-left: $distance-between-menu-items;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  a {
+    margin-left: 5px;
+  }
+}
+
+.sub-menu {
+  &:hover &__content {
+    display: block;
+  }
+
+  &__content {
+    align-self: flex-start;
+    margin-top: $generalPadding;
+
+    display: none;
+    background: rgb(17, 17, 17);
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+
+    &:before {
+      background-image: -webkit-linear-gradient(transparent 90%, rgb(17, 17, 17) 90%, rgb(17, 17, 17)),
+        -webkit-linear-gradient(0deg, transparent 90%, rgb(17, 17, 17) 90%, rgb(17, 17, 17));
+    }
+  }
+
+  &__language {
+    display: flex;
+    align-items: center;
+    float: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+
+    &:hover {
+      a {
+        color: #3babed;
+      }
+    }
+  }
+
+  &__flag {
+    width: 24px;
+    height: 24px;
+  }
+
+  .current-language {
+    color: #3babed;
+  }
+}
