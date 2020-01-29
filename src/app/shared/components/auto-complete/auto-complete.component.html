@@ -1,0 +1,33 @@
+<!-- localisation -->
+<div class="auto-complete__container">
+  <label for="{{ label.trim() }}">{{ label }}</label>
+  <div class="auto-complete__container">
+    <div class="auto-complete__container--icon-wrapper">
+      <svg class="auto-complete__input--icon" aria-hidden="true">
+        <use href="assets/svgs/global.svg#Magnify"></use>
+      </svg>
+      <input
+        [formControl]="searchParamFormControl"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        class="auto-complete__input"
+        autocomplete="off"
+        id="{{ label.trim() }}"
+        placeholder="Search..."
+      />
+    </div>
+    <div class="auto-complete__items--container">
+      <span *ngFor="let option of options" (mousedown)="optionSelected(option)">{{ option?.name }}</span>
+      <ng-container *ngIf="!options?.length && inFocus">
+        <span *ngIf="!showLoading && searchParamFormControl?.value?.length">No result found.</span>
+        <span *ngIf="showLoading" class="loading">
+          <div class="loading__container">
+            <div class="loading__wrapper">
+              <div></div>
+            </div>
+          </div>
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</div>

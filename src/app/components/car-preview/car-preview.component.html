@@ -1,0 +1,46 @@
+<div class="car-preview">
+  <app-slide-show
+    [imageSources]="['assets/images/amg.jpg', 'assets/images/GLC.jpg']"
+    [autoplay]="isAutoPlay"
+    (mouseenter)="isAutoPlay = false"
+    (mouseleave)="isAutoPlay = true"
+    (indexChange)="currentIndex = $event"
+  ></app-slide-show>
+
+  <ng-container *ngFor="let vehicleInfo of vehiclesInfo; let index = index">
+    <div *ngIf="index === currentIndex" class="car-preview__car-details">
+      <div class="car-preview__car-info">
+        <span
+          [appIconSize]="'small'"
+          [appIconAlignment]="'center'"
+          appIcon="Car"
+          class="car-preview__car-details--info-type"
+          >{{ 'car-preview.vehicle' | translate }}:</span
+        >
+        <span class="car-preview__car-details--info-detail">{{ vehicleInfo.name }}</span>
+      </div>
+
+      <div class="car-preview__car-info">
+        <span
+          [appIconSize]="'small'"
+          [appIconAlignment]="'center'"
+          appIcon="Wrench"
+          class="car-preview__car-details--info-type"
+          >{{ 'car-preview.consumption' | translate }}:</span
+        >
+        <span class="car-preview__car-details--info-detail">{{ vehicleInfo.consumption }}</span>
+      </div>
+
+      <div class="car-preview__car-info">
+        <span
+          [appIconSize]="'small'"
+          [appIconAlignment]="'center'"
+          appIcon="Road"
+          class="car-preview__car-details--info-type"
+          >{{ 'car-preview.km' | translate }}:</span
+        >
+        <span class="car-preview__car-details--info-detail">{{ vehicleInfo.km }}</span>
+      </div>
+    </div>
+  </ng-container>
+</div>

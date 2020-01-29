@@ -11,7 +11,7 @@ section {
   width: 100%;
   margin: 25px auto;
   padding: 20px;
-  max-width: 800px;
+  max-width: 1200px;
   font-size: 1.2em;
   line-height: 1.6em;
   box-sizing: border-box;
@@ -27,7 +27,44 @@ section {
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
   fill: white;
+
+  &-small {
+    width: 12px;
+    height: 12px;
+  }
+
+  &-normal {
+    width: 24px;
+    height: 24px;
+  }
+
+  &-large {
+    width: 48px;
+    height: 48px;
+  }
+
+  &-white {
+    fill: #fff;
+  }
+
+  &-black {
+    fill: #000;
+  }
+
+  &-lightgrey {
+    fill: #999;
+  }
+
+  &-start {
+    align-self: start;
+  }
+
+  &-center {
+    align-self: center;
+  }
+
+  &-end {
+    align-self: end;
+  }
 }

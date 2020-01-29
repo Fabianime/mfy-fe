@@ -1,0 +1,77 @@
+<!-- Localisation -->
+<a id="contact"></a>
+<div class="contact__container">
+  <div class="contact__wrapper">
+    <ng-container *ngIf="dataWasSend; then successfulSendContactForm; else normalContactForm"> </ng-container>
+  </div>
+</div>
+
+<ng-template #successfulSendContactForm>
+  <div class="contact__title--container">
+    <span class="contact__title--1">
+      {{ getEmailSendingStatusHeadline() }}
+    </span>
+
+    <span class="contact__title--2" *ngIf="isEmailSendingSuccessful === SendingEmailProgressStatus.SUCCESSFUL">
+      We will contact you in a short notice.
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #normalContactForm>
+  <div class="contact__title--container">
+    <span class="contact__title--1">
+      Contact Us
+    </span>
+
+    <span class="contact__title--2">
+      Feel free to drop us a line below!
+    </span>
+  </div>
+  <div class="contact__form">
+    <app-input
+      [label]="'Full Name:'"
+      [componentControl]="fullNameControl"
+      [placeholder]="'Enter full name'"
+      [errorMessage]="'Name is required!'"
+    >
+    </app-input>
+
+    <app-input
+      [label]="'Email:'"
+      [componentControl]="emailControl"
+      [placeholder]="'Enter email address'"
+      [errorMessage]="'Valid email is required!'"
+    >
+    </app-input>
+
+    <app-input [label]="'Phone:'" [componentControl]="phoneNumberControl" [placeholder]="'Enter phone number'">
+    </app-input>
+
+    <div *ngIf="showIncludeCalculationData" class="contact__input--container contact__checkbox--wrapper">
+      <input [formControl]="calcDataControl" id="calcData" type="checkbox" class="contact__checkbox--checkbox" />
+      <svg class="contact__checkbox--icon" aria-hidden="true">
+        <use href="assets/svgs/global.svg#checkMark"></use>
+      </svg>
+      <label class="contact__checkbox--label" for="calcData">Include calculation data</label>
+      <span class="contact__input--focus"></span>
+    </div>
+
+    <app-input
+      [label]="'Message:'"
+      [componentControl]="messageControl"
+      [placeholder]="'Your Comment...'"
+      [errorMessage]="'Message is required!'"
+      [inputType]="'textarea'"
+    >
+    </app-input>
+
+    <div class="contact__button--container">
+      <button class="contact__button--button" (click)="sendDataIfValid()">
+        <span>
+          Submit
+        </span>
+      </button>
+    </div>
+  </div>
+</ng-template>

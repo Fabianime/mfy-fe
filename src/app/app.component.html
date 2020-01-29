@@ -1,7 +1,5 @@
 <app-navigation [scrolled]="scrolled"></app-navigation>
 <app-header [(scrolled)]="scrolled"></app-header>
-<!--
-<app-slide-show [imageSources]="['assets/car.jpg', 'assets/handshake.jpg', 'assets/luxury.jpg']"> </app-slide-show>-->
 
 <router-outlet></router-outlet>
 
@@ -35,4 +33,13 @@
     vivendum indoctum eos.
   </p>
   <p>Donec lobortis porta ipsum a tristique. Integer sit amet ipsum porta, bibendum mauris vitae, ultricies lectus.</p>
+
+  <app-car-preview></app-car-preview>
+  <app-distance-calculator (calculationData)="calculationDataChange($event)"></app-distance-calculator>
+  <app-contact-form
+    [showIncludeCalculationData]="!!calculationData"
+    [isEmailSendingSuccessful]="emailSendingProgress"
+    (sendContactData)="sendContactEmail($event)"
+  ></app-contact-form>
 </section>
+<app-footer></app-footer>

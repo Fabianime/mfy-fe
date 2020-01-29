@@ -1,0 +1,82 @@
+<!-- Localisation -->
+<div>
+  <h2>Fahrplan-Rechner</h2>
+  <p>
+    Sed lectus mi, eleifend quis congue non, lacinia id quam. Cras porta pellentesque nulla, ac auctor ligula
+    scelerisque non. In vel placerat lacus. Nam pretium vitae purus et laoreet. Aliquam erat volutpat. Pellentesque id
+    volutpat sem, et condimentum nisl. Donec bibendum congue mauris, ac commodo tortor volutpat ac. Donec lobortis lorem
+    nisi, sit amet bibendum lacus vestibulum interdum. Donec mollis ligula at semper iaculis.
+  </p>
+</div>
+
+<div class="destination-calculator__wrapper">
+  <div
+    [class.destination-calculator__calc-data-present]="!!currentCalculationData"
+    class="destination-calculator__container"
+  >
+    <app-auto-complete
+      [label]="'Start location'"
+      [options]="startLocationOptions"
+      (valueChanges)="searchStartPosition($event)"
+      (selected)="selectedStartPosition($event)"
+    ></app-auto-complete>
+
+    <app-auto-complete
+      [label]="'Destination'"
+      [options]="destinationLocationOptions"
+      (valueChanges)="searchDestinationPosition($event)"
+      (selected)="selectedDestinationPosition($event)"
+    ></app-auto-complete>
+  </div>
+  <div *ngIf="currentCalculationData" class="destination-calculator__result">
+    <ng-container *ngIf="showMore; then detailedCalc; else simpleCalc"></ng-container>
+  </div>
+</div>
+<div class="destination-calculator__container">
+  <iframe #directionMap class="destination-calculator__directions-map" frameborder="0" src="" allowfullscreen></iframe>
+</div>
+
+<ng-template #simpleCalc>
+  <div class="destination-calculator__result--item">
+    <span>Total cost:</span>
+    <span>{{ currentCalculationData?.totalCost | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item-show-more" (click)="toggleShowMore()">
+    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-down">Show more</p>
+  </div>
+</ng-template>
+
+<ng-template #detailedCalc>
+  <div class="destination-calculator__result--item">
+    <span>Basis fee:</span>
+    <span>{{ '3.5' | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item">
+    <span>First 4 KM fee:</span>
+    <span>{{ '2.5' | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item">
+    <span>After 4 KM fee:</span>
+    <span>{{ '2' | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item">
+    <span>Total distance:</span>
+    <span>{{ currentCalculationData?.distanceInKm?.exact }} KM</span>
+  </div>
+  <br />
+  <div class="destination-calculator__result--item">
+    <span>Cost for first 4 KM:</span>
+    <span>{{ currentCalculationData?.costFirstFourKm | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item">
+    <span>Cost after first 4 KM:</span>
+    <span>{{ currentCalculationData?.costAfterFourKm | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item destination-calculator__result--item-highlighted">
+    <span>Total cost:</span>
+    <span>{{ currentCalculationData?.totalCost | Euro }}</span>
+  </div>
+  <div class="destination-calculator__result--item-show-more" (click)="toggleShowMore()">
+    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-up">Show less</p>
+  </div>
+</ng-template>

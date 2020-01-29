@@ -1,13 +1,13 @@
 <nav [class.scrolled]="scrolled" class="navigation">
-  <a href="#">
+  <a>
     <img src="assets/images/logo.png" alt="logo" class="logo" />
   </a>
   <div class="navigation-container">
     <div class="navigation-child">
-      <a href="#">{{ 'menu.fleet' | translate }}</a>
+      <a>{{ 'menu.fleet' | translate }}</a>
     </div>
     <div class="navigation-child sub-menu language" (click)="openLanguageDropdown()">
-      <a appIcon="Earth" href="#">{{ 'menu.language' | translate }}</a>
+      <a appIcon="Earth">{{ 'menu.language' | translate }}</a>
       <div class="sub-menu__content">
         <div
           *ngFor="let language of languageList"
@@ -22,7 +22,7 @@
     <div class="navigation-child-with-dropdown"></div>
 
     <div class="navigation-child">
-      <a href="#">{{ 'menu.contact' | translate }}</a>
+      <a href="#contact">{{ 'menu.contact' | translate }}</a>
     </div>
   </div>
 </nav>

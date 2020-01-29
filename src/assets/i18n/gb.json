@@ -7,5 +7,10 @@
     "fleet": "FLEET",
     "language": "LANGUAGE",
     "contact": "CONTACT"
+  },
+  "car-preview": {
+    "vehicle": "Vehicle name",
+    "consumption": "Fuel consumption",
+    "km": "Distance"
   }
 }

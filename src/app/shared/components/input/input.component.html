@@ -1,0 +1,12 @@
+<div *ngIf="!!componentControl" [class.input__error--container]="errorMessage && hasError()" class="input__container">
+  <span class="input__label">{{ label }}</span>
+  <input *ngIf="isTextField()" [formControl]="componentControl" class="input__input" placeholder="{{ placeholder }}" />
+  <textarea
+    *ngIf="isTextareaField()"
+    [formControl]="componentControl"
+    class="input__input input__textarea "
+    placeholder="{{ placeholder }}"
+  ></textarea>
+  <span class="input__focus"></span>
+  <span *ngIf="errorMessage && hasError()" class="input__error">{{ errorMessage }}</span>
+</div>

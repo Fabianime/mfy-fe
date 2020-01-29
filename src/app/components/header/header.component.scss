@@ -7,7 +7,8 @@ header {
   height: 400px;
   color: #fff;
   text-align: center;
-  background: url('https://farm9.staticflickr.com/8088/8363737128_b76782c7a2_b.jpg') no-repeat center center;
+  // background: url('https://farm9.staticflickr.com/8088/8363737128_b76782c7a2_b.jpg') no-repeat center center;
+  background: url('/assets/images/toyota-fleet.jpg') no-repeat center center;
   background-size: cover;
   &:after {
     position: absolute;
@@ -16,7 +17,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(#111, 0.5);
+    background: rgba(#111, 0.3);
   }
 }
 
