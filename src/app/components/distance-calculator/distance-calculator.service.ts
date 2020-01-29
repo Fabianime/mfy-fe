@@ -1,33 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export interface AutoComplete {
-  predictions: AutoCompleteData[];
-}
-
-export interface AutoCompleteData {
-  name: string;
-  id: string;
-}
-
-export interface CalculationData {
-  totalCost: number;
-  costFirstFourKm: number;
-  costAfterFourKm: number;
-  distanceInKm: {
-    roundedUp: number;
-    exact: number;
-  };
-  origin?: string;
-  destination?: string;
-}
-
-export interface DistanceData {
-  start_address: string;
-  end_address: string;
-  totalDistance: number;
-}
+import { environment } from '../../../environments/environment';
+import { AutoComplete, CalculationData, DistanceData } from './distance-calculatior.model';
 
 export const calculationBaseData = { basicFee: 3.5, firstFourKmFee: 2.5, afterFourKmFee: 2 };
 
@@ -38,22 +13,22 @@ export class DistanceCalculatorService {
   constructor(private readonly httpClient: HttpClient) {}
 
   test2(searchParam: string): Observable<AutoComplete> {
-    const url = 'http://localhost:8080/autocomplete';
+    const { api, path } = environment;
     const params = {
       language: 'de',
       input: searchParam,
     };
-    return this.httpClient.get<AutoComplete>(url, { params });
+    return this.httpClient.get<AutoComplete>(api + path.google.autocomplete, { params });
   }
 
   distance(origin: string, destination: string) {
-    const url = 'http://localhost:8080/distance';
+    const { api, path } = environment;
     const params = {
       origin: 'place_id:' + origin,
       destination: 'place_id:' + destination,
     };
 
-    return this.httpClient.get<DistanceData>(url, { params });
+    return this.httpClient.get<DistanceData>(api + path.google.distance, { params });
   }
 
   calculate(distanceInMeters: number): CalculationData {

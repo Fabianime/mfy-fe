@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ContactData, SendingEmailProgressStatus } from './components/contact-form/contact-form.component';
-import { CalculationData } from './components/distance-calculator/distance-calculator.service';
+import { CalculationData } from './components/distance-calculator/distance-calculatior.model';
 import { DataForEmail, EmailService } from './shared/services/email.service';
 
 @Component({

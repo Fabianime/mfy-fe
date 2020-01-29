@@ -2,12 +2,8 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild }
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AutoCompleteOption } from '../../shared/components/auto-complete/auto-complete.component';
-import {
-  AutoCompleteData,
-  CalculationData,
-  DistanceCalculatorService,
-  DistanceData,
-} from './distance-calculator.service';
+import { CalculationData, DistanceData } from './distance-calculatior.model';
+import { DistanceCalculatorService } from './distance-calculator.service';
 
 @Component({
   selector: 'app-distance-calculator',
@@ -33,7 +29,9 @@ export class DistanceCalculatorComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const defaultDirectionsParams =
-      'AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk&origin=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc&destination=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc';
+      'AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk' +
+      '&origin=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc' +
+      '&destination=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc';
 
     this.directionMap.nativeElement.src = this.defaultDirectionsUrl + defaultDirectionsParams;
   }
