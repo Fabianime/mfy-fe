@@ -1,5 +1,5 @@
-<app-navigation [scrolled]="scrolled"></app-navigation>
-<app-header [(scrolled)]="scrolled"></app-header>
+<app-navigation [scrolled]="scrolled$ | async"></app-navigation>
+<app-header (scrolled)="emitScrolledStatus($event)"></app-header>
 
 <router-outlet></router-outlet>
 

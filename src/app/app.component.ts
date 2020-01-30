@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 import { ContactData, SendingEmailProgressStatus } from './components/contact-form/contact-form.component';
 import { CalculationData } from './components/distance-calculator/distance-calculatior.model';
 import { DataForEmail, EmailService } from './shared/services/email.service';
@@ -10,7 +11,7 @@ import { DataForEmail, EmailService } from './shared/services/email.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  scrolled = false;
+  scrolled$ = new BehaviorSubject(false);
   calculationData: CalculationData;
   emailSendingProgress: SendingEmailProgressStatus;
 
@@ -18,12 +19,10 @@ export class AppComponent {
     this.initI18n();
   }
 
-  private initI18n(): void {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    this.translateService.setDefaultLang('gb');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    this.translateService.use('gb');
+  emitScrolledStatus(isScrolled: boolean) {
+    if (isScrolled !== this.scrolled$.value) {
+      this.scrolled$.next(isScrolled);
+    }
   }
 
   calculationDataChange(data: CalculationData): void {
@@ -40,5 +39,13 @@ export class AppComponent {
       () => (this.emailSendingProgress = SendingEmailProgressStatus.SUCCESSFUL),
       () => (this.emailSendingProgress = SendingEmailProgressStatus.ERROR)
     );
+  }
+
+  private initI18n(): void {
+    // this language will be used as a fallback when a translation isn't found in the current language
+    this.translateService.setDefaultLang('gb');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    this.translateService.use('gb');
   }
 }

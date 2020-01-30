@@ -1,10 +1,10 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
-  Input,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -13,20 +13,10 @@ import {
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements AfterViewInit {
-  @Output()
-  scrolledChange = new EventEmitter<boolean>();
-
-  @Input()
-  get scrolled(): boolean {
-    return this._scrolled;
-  }
-
-  set scrolled(val) {
-    this._scrolled = val;
-    this.scrolledChange.emit(this._scrolled);
-  }
+export class HeaderComponent {
+  @Output() scrolled = new EventEmitter<boolean>();
 
   @ViewChild('header', { static: false }) header: ElementRef;
   @ViewChild('headline', { static: false }) headline: ElementRef;
@@ -35,15 +25,7 @@ export class HeaderComponent implements AfterViewInit {
   opacity = 1;
   transform = '';
 
-  private _scrolled: boolean;
-
-  constructor() {}
-
-  ngAfterViewInit(): void {
-    this.initAnimation();
-  }
-
-  @HostListener('document:scroll', ['$event']) onScrollEvent() {
+  @HostListener('document:scroll', ['']) onScrollEvent() {
     this.initAnimation();
   }
 
@@ -58,6 +40,6 @@ export class HeaderComponent implements AfterViewInit {
 
     this.opacity = 1 - distanceToTop / headlineHeight;
     this.transform = `translateY(${distanceToTop * 0.4}px)`;
-    this.scrolled = distanceToTop > headlineHeight;
+    this.scrolled.emit(distanceToTop > headlineHeight);
   }
 }

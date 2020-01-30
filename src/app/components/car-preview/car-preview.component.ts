@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-car-preview',
   templateUrl: './car-preview.component.html',
   styleUrls: ['./car-preview.component.scss'],
 })
-export class CarPreviewComponent implements OnInit {
+export class CarPreviewComponent {
   isAutoPlay = true;
   currentIndex = 0;
   vehiclesInfo = [
@@ -22,8 +22,4 @@ export class CarPreviewComponent implements OnInit {
       image: 'assets/images/glc.jpg',
     },
   ];
-
-  constructor() {}
-
-  ngOnInit() {}
 }
