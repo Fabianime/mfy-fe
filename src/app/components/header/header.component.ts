@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -38,8 +37,11 @@ export class HeaderComponent {
     const distanceToTop = headerRectData.top * -1;
     const headlineHeight = headlineRectData.height - navHeight;
 
-    this.opacity = 1 - distanceToTop / headlineHeight;
-    this.transform = `translateY(${distanceToTop * 0.4}px)`;
     this.scrolled.emit(distanceToTop > headlineHeight);
+
+    if (distanceToTop < headlineHeight) {
+      this.opacity = 1 - distanceToTop / headlineHeight;
+      this.transform = `translateY(${distanceToTop * 0.4}px)`;
+    }
   }
 }

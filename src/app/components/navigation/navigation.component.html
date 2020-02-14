@@ -3,9 +3,6 @@
     <img src="assets/images/logo.png" alt="logo" class="logo" />
   </a>
   <div class="navigation-container">
-    <div class="navigation-child">
-      <a>{{ 'menu.fleet' | translate }}</a>
-    </div>
     <div class="navigation-child sub-menu language" (click)="openLanguageDropdown()">
       <a appIcon="Earth">{{ 'menu.language' | translate }}</a>
       <div class="sub-menu__content">
@@ -19,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div class="navigation-child">
+      <a>{{ 'menu.fleet' | translate }}</a>
+    </div>
     <div class="navigation-child-with-dropdown"></div>
 
     <div class="navigation-child">
@@ -26,3 +26,49 @@
     </div>
   </div>
 </nav>
+
+<!-- Start Mobile Navigation -->
+<div class="navigation-resp">
+  <ul class="navigation-resp__main navigation-resp__menu--container">
+    <li class="navigation-resp__main--trigger">
+      <a
+        [class.navigation-resp__icon-menu--selected]="responsiveMenuIsExpanded"
+        (click)="toggleMenu()"
+        class="navigation-resp__icon-menu"
+      ></a>
+      <nav [class.navigation-resp__wrapper--open]="responsiveMenuIsExpanded" class="navigation-resp__wrapper">
+        <ul class="navigation-resp__menu navigation-resp__menu--container">
+          <li [class.navigation-resp__sub-menu--expanded]="responsiveLanguageIsExpanded">
+            <div class="navigation-resp__menu--icon">
+              <a (click)="toggleLanguage()" appIcon="Arrow-down" [appIconAlignment]="'center'">
+                {{ 'menu.language' | translate }}
+              </a>
+            </div>
+            <ul class="navigation-resp__sub-menu">
+              <li *ngFor="let language of languageList" (click)="switchLanguage(language.languageCode)" class="">
+                <span class="flag-icon flag-icon-{{ language.languageCode }}"></span>
+                <a
+                  [class.selected]="currentLanguage === language.languageCode"
+                  class="navigation-resp__sub-menu--label"
+                >
+                  {{ language.language }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a>{{ 'menu.fleet' | translate }}</a>
+          </li>
+          <li>
+            <a href="#contact" (click)="toggleMenu()">{{ 'menu.contact' | translate }}</a>
+          </li>
+        </ul>
+      </nav>
+    </li>
+    <li class="navigation-resp__main--logo">
+      <a>
+        <img src="assets/images/logo.png" alt="logo" class="logo" />
+      </a>
+    </li>
+  </ul>
+</div>
