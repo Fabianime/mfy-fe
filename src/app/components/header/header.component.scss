@@ -1,14 +1,15 @@
+@import '../../stylingVariables';
+
 header {
-  background: #111;
+  background: $color-background-default;
 }
 
 .headline {
   z-index: 1;
   position: relative;
   height: 400px;
-  color: #fff;
+  color: $color-white;
   text-align: center;
-  // background: url('https://farm9.staticflickr.com/8088/8363737128_b76782c7a2_b.jpg') no-repeat center center;
   background: url('/assets/images/toyota-fleet.jpg') no-repeat center center;
   background-size: cover;
   &:after {
@@ -18,7 +19,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(#111, 0.3);
+    background: rgba($color-background-default, 0.3);
   }
 }
 
@@ -39,6 +40,5 @@ header {
     margin: 0;
     font-size: 1.4em;
     font-style: italic;
-    font-family: serif;
   }
 }

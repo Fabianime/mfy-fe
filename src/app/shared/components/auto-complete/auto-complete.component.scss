@@ -1,3 +1,5 @@
+@import '../../../stylingVariables';
+
 .auto-complete {
   &__container {
     display: inline-block;
@@ -13,7 +15,7 @@
 
   &__input {
     border: 1px solid #999;
-    color: #333;
+    color: $color-text-default;
     height: 35px;
     padding: 0 10px 0 35px;
     font-size: 100%;
@@ -34,7 +36,7 @@
     flex-direction: column;
     position: absolute;
     width: 100%;
-    background-color: #111111;
+    background-color: $color-background-default;
     opacity: 90%;
     color: white;
     z-index: 100;
@@ -53,7 +55,7 @@
       }
 
       &:hover {
-        color: #3babed;
+        color: $color-blue;
       }
     }
   }
@@ -88,7 +90,7 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    border: 10px solid #3babed;
+    border: 10px solid $color-blue;
     border-top-color: transparent;
     border-radius: 50%;
     animation: loading__animation 1s linear infinite;

@@ -8,11 +8,11 @@
 
 <ng-template #successfulSendContactForm>
   <div class="contact__title--container">
-    <span class="contact__title--1">
+    <span class="contact__title--main">
       {{ getEmailSendingStatusHeadline() }}
     </span>
 
-    <span class="contact__title--2" *ngIf="isEmailSendingSuccessful === SendingEmailProgressStatus.SUCCESSFUL">
+    <span class="contact__title--sub" *ngIf="isEmailSendingSuccessful === SendingEmailProgressStatus.SUCCESSFUL">
       We will contact you in a short notice.
     </span>
   </div>
@@ -20,11 +20,11 @@
 
 <ng-template #normalContactForm>
   <div class="contact__title--container">
-    <span class="contact__title--1">
+    <span class="contact__title--main">
       Contact Us
     </span>
 
-    <span class="contact__title--2">
+    <span class="contact__title--sub">
       Feel free to drop us a line below!
     </span>
   </div>

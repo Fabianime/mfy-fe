@@ -1,10 +1,8 @@
 @import '../../stylingVariables';
 
-$generalPadding: 25px;
-
 .scrolled {
-  background: rgb(17, 17, 17);
-  opacity: 90%;
+  background: $color-background-default;
+  opacity: $opacity-default;
 
   .sub-menu__content {
     opacity: 1;
@@ -42,13 +40,13 @@ $generalPadding: 25px;
 
   a {
     font-size: 0.9em;
-    color: #fff;
+    color: $color-white;
     text-decoration: none;
     margin-left: $distance-between-menu-items;
     display: block;
 
     &:hover {
-      color: #3babed;
+      color: $color-blue;
     }
   }
 }
@@ -91,15 +89,19 @@ $generalPadding: 25px;
     margin-top: $generalPadding;
 
     display: none;
-    background: rgb(17, 17, 17);
+    background: $color-background-default;
     opacity: 0.9;
     position: absolute;
     min-width: 160px;
     z-index: 1;
 
     &:before {
-      background-image: -webkit-linear-gradient(transparent 90%, rgb(17, 17, 17) 90%, rgb(17, 17, 17)),
-        -webkit-linear-gradient(0deg, transparent 90%, rgb(17, 17, 17) 90%, rgb(17, 17, 17));
+      background-image: -webkit-linear-gradient(
+          transparent $opacity-default,
+          $color-background-default $opacity-default,
+          $color-background-default
+        ),
+        -webkit-linear-gradient(0deg, transparent $opacity-default, $color-background-default $opacity-default, $color-background-default);
     }
   }
 
@@ -113,7 +115,7 @@ $generalPadding: 25px;
 
     &:hover {
       a {
-        color: #3babed;
+        color: $color-blue;
       }
     }
   }
@@ -124,7 +126,7 @@ $generalPadding: 25px;
   }
 
   .current-language {
-    color: #3babed;
+    color: $color-blue;
   }
 }
 
@@ -239,7 +241,7 @@ $generalPadding: 25px;
       color: $color-text-light;
 
       &.selected {
-        color: #3babed;
+        color: $color-blue;
       }
     }
 
