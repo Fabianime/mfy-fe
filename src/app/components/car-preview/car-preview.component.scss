@@ -1,3 +1,5 @@
+@import '../../stylingVariables';
+
 .car-preview {
   display: flex;
   flex-direction: column-reverse;
@@ -5,7 +7,7 @@
     align-self: flex-end;
     display: flex;
     padding: 10px;
-    color: #c3c3c3;
+    color: $color-white;
     min-width: 200px;
     min-height: 100px;
     position: absolute;
@@ -14,15 +16,31 @@
     margin: -25px -25px 25px;
     background: rgba(17, 17, 17, 0.9);
 
+    @media (max-width: $max-mq2) {
+      position: inherit;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     &--info-type {
       padding: 0 10px;
     }
     &--info-detail {
       margin-left: auto;
+      @media (max-width: $max-mq1) {
+        width: 100%;
+        padding-bottom: 10px;
+      }
     }
   }
   &__car-info {
     display: flex;
     align-items: center;
+    flex-flow: wrap;
+
+    @media (max-width: $max-mq2) {
+      padding: 0 10px;
+    }
   }
 }

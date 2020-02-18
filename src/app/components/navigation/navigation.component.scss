@@ -10,12 +10,12 @@
 }
 
 .navigation {
-  @media (max-width: 768px) {
+  @media (max-width: $max-mq2) {
     display: none;
   }
   position: fixed;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
 
   &-container {
     float: right;
@@ -131,12 +131,12 @@
 }
 
 .navigation-resp {
-  @media (min-width: 769px) {
+  @media (min-width: $min-mq2) {
     display: none;
   }
   position: fixed;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
 
   &__main {
     background: $color-background-default-with-opacity;
@@ -197,7 +197,7 @@
 
     &--open {
       width: 370px;
-      @media (max-width: 422px) {
+      @media (max-width: $max-mq1) {
         width: 100%;
       }
     }
@@ -261,14 +261,14 @@
       }
     }
   }
-
-  &__icon-menu::before {
-    width: 30px;
-    height: 3px;
-    display: inline-block;
-    box-shadow: 0 3px white, 0 -9px white;
-    content: '';
-
+  &__icon-menu {
+    &::before {
+      width: 30px;
+      height: 3px;
+      display: inline-block;
+      box-shadow: 0 3px white, 0 -9px white;
+      content: '';
+    }
     &--selected::before {
       box-shadow: 0 3px $color-blue, 0 -9px $color-blue;
     }

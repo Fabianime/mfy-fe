@@ -8,7 +8,7 @@
       </svg>
       <input
         [formControl]="searchParamFormControl"
-        (focus)="onFocus()"
+        (keydown)="onKeyDown($event)"
         (blur)="onBlur()"
         class="auto-complete__input"
         autocomplete="off"
@@ -18,8 +18,10 @@
     </div>
     <div class="auto-complete__items--container">
       <span *ngFor="let option of options" (mousedown)="optionSelected(option)">{{ option?.name }}</span>
-      <ng-container *ngIf="!options?.length && inFocus">
-        <span *ngIf="!showLoading && searchParamFormControl?.value?.length">No result found.</span>
+      <ng-container *ngIf="!options?.length && isSearchStarted">
+        <span *ngIf="!showLoading && searchParamFormControl?.value?.length" class="auto-complete__no-items"
+          >No result found.</span
+        >
         <span *ngIf="showLoading" class="loading">
           <div class="loading__container">
             <div class="loading__wrapper">

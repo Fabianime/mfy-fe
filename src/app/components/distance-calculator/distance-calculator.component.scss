@@ -3,14 +3,14 @@
 .destination-calculator {
   &__wrapper {
     display: flex;
-    @media (max-width: 768px) {
+    @media (max-width: $max-mq2) {
       flex-direction: column;
       align-items: center;
     }
   }
 
   &__calc-data-present {
-    @media (max-width: 1024px) {
+    @media (max-width: $max-mq3) {
       flex-direction: column;
       align-items: center;
     }
@@ -21,7 +21,7 @@
     flex: 4;
     justify-content: space-evenly;
 
-    @media (max-width: 768px) {
+    @media (max-width: $max-mq2) {
       flex-direction: column;
       align-items: center;
       padding: 16px;
@@ -38,11 +38,11 @@
 
     transition: all 0.6s;
 
-    @media (max-width: 1024px) {
+    @media (max-width: $max-mq3) {
       align-self: center;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: $max-mq2) {
       margin: 1em 0;
       max-width: 300px;
     }
@@ -53,6 +53,10 @@
       justify-content: space-between;
       font-size: 16px;
       line-height: 20px;
+
+      &:nth-child(1) {
+        padding-top: 10px;
+      }
 
       &-show-more {
         display: flex;
@@ -84,7 +88,7 @@
     border-radius: 5px;
     background: rgba(17, 17, 17, 0.9);
 
-    @media (max-width: 768px) {
+    @media (max-width: $max-mq2) {
       margin: 0;
     }
   }

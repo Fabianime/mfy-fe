@@ -213,13 +213,13 @@
 }
 
 /* [ Responsive ] */
-@media (max-width: 576px) {
+@media (max-width: $max-mq2) {
   .contact__form {
-    padding: 43px 15px 57px 117px;
+    padding: 43px 44px 57px 120px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: $max-mq1) {
   .contact__form {
     padding: 43px 15px 57px 15px;
   }

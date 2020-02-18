@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs/operators';
 
@@ -6,37 +6,51 @@ export interface AutoCompleteOption {
   id: string;
   name: string;
 }
+
 @Component({
   selector: 'app-auto-complete',
   templateUrl: './auto-complete.component.html',
   styleUrls: ['./auto-complete.component.scss'],
 })
-export class AutoCompleteComponent implements OnInit {
-  @Input() label: string;
-  @Input() options: AutoCompleteOption[];
+export class AutoCompleteComponent implements OnInit, OnChanges {
   @Output() valueChanges = new EventEmitter();
   @Output() selected = new EventEmitter();
 
+  @Input() label: string;
+  @Input() options: AutoCompleteOption[];
+
   searchParamFormControl = new FormControl();
   showLoading = false;
-  inFocus = false;
+  isSearchStarted = false;
   private selectedOption: string;
 
   ngOnInit() {
     this.searchParamFormControl.valueChanges
       .pipe(
+        tap(() => (this.isSearchStarted = true)),
         tap((searchParam: string) => (this.showLoading = !!searchParam.length)),
-        debounceTime(1000),
-        tap(() => (this.showLoading = false))
+        tap(() => (this.options = [])),
+        debounceTime(1000)
       )
       .subscribe((searchParam: string) => {
         this.valueChanges.emit(searchParam);
       });
   }
 
-  onFocus() {
-    this.inFocus = true;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['options']) {
+      this.showLoading = false;
+    }
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key !== 'Enter') {
+      return;
+    }
+
     const searchParam = this.searchParamFormControl.value;
+    this.showLoading = !!searchParam;
+    this.isSearchStarted = true;
 
     if (searchParam) {
       this.valueChanges.emit(searchParam);
@@ -44,7 +58,8 @@ export class AutoCompleteComponent implements OnInit {
   }
 
   onBlur() {
-    this.inFocus = false;
+    this.isSearchStarted = false;
+    this.showLoading = false;
     this.options = [];
   }
 
