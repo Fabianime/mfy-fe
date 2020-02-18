@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { ContactData, SendingEmailProgressStatus } from './components/contact-form/contact-form.component';
-import { CalculationData } from './components/distance-calculator/distance-calculatior.model';
+import { CalculationData } from './components/distance-calculator/distance-calculator.model';
 import { DataForEmail, EmailService } from './shared/services/email.service';
 
 @Component({

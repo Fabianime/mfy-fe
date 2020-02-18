@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AutoComplete, CalculationData, DistanceData } from './distance-calculatior.model';
+import { AutoComplete, CalculationData, DistanceData } from './distance-calculator.model';
 
 export const calculationBaseData = { basicFee: 3.5, firstFourKmFee: 2.5, afterFourKmFee: 2 };
 

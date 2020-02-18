@@ -1,11 +1,10 @@
 {
   "name": "mfy-fe",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "local": "ng serve --ssl --ssl-key ~/Documents/tmp/localhost.key  --ssl-cert ~/Documents/tmp/localhost.crt",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "pretty-commit": "pretty-quick --staged"
@@ -22,10 +21,9 @@
     "@angular/router": "8.2.14",
     "@ngx-translate/core": "11.0.1",
     "@ngx-translate/http-loader": "4.0.0",
-    "flag-icon-css": "^3.4.5",
+    "flag-icon-css": "3.4.5",
     "husky": "3.1.0",
     "ng-simple-slideshow": "1.2.9",
-    "npm": "6.13.1",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
     "rxjs": "6.4.0",
@@ -35,7 +33,7 @@
     "zone.js": "0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.803.19",
+    "@angular-devkit/build-angular": "^0.803.24",
     "@angular/cli": "8.3.19",
     "@angular/compiler-cli": "8.2.14",
     "@angular/language-service": "8.2.14",
@@ -50,6 +48,7 @@
     "karma-coverage-istanbul-reporter": "2.0.1",
     "karma-jasmine": "2.0.1",
     "karma-jasmine-html-reporter": "1.4.0",
+    "npm": "6.13.7",
     "protractor": "5.4.0",
     "ts-node": "7.0.0",
     "tslint": "5.15.0",

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild }
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AutoCompleteOption } from '../../shared/components/auto-complete/auto-complete.component';
-import { CalculationData, DistanceData } from './distance-calculatior.model';
+import { CalculationData, DistanceData } from './distance-calculator.model';
 import { DistanceCalculatorService } from './distance-calculator.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class DistanceCalculatorComponent implements AfterViewInit {
   startLocationOptions: AutoCompleteOption[];
   destinationLocationOptions: AutoCompleteOption[];
 
-  defaultDirectionsUrl = 'https://www.google.com/maps/embed/v1/directions?zoom=10&key=';
+  defaultDirectionsUrl = 'https://www.google.com/maps/embed/v1/directions?zoom=8&key=';
   currentCalculationData: CalculationData;
 
   showMore = false;
@@ -28,6 +28,7 @@ export class DistanceCalculatorComponent implements AfterViewInit {
   constructor(private readonly distanceCalculatorService: DistanceCalculatorService) {}
 
   ngAfterViewInit(): void {
+    // ToDo: Remove Key.
     const defaultDirectionsParams =
       'AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk' +
       '&origin=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc' +
