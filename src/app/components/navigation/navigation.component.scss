@@ -29,6 +29,10 @@
     float: left;
     display: flex;
     height: 24px;
+
+    &:hover {
+      color: $color-blue;
+    }
   }
 
   &-child-with-dropdown {
@@ -44,10 +48,6 @@
     text-decoration: none;
     margin-left: $distance-between-menu-items;
     display: block;
-
-    &:hover {
-      color: $color-blue;
-    }
   }
 }
 
@@ -86,7 +86,7 @@
 
   &__content {
     align-self: flex-start;
-    margin-top: $generalPadding;
+    margin-top: 24px;
 
     display: none;
     background: $color-background-default;
