@@ -1,16 +1,92 @@
 {
   "header": {
-    "headline": "MOBILITY FOR YOU",
-    "subHeadline": "Zufälliger text"
+    "headline": "MOBILITÄT FÜR SIE ",
+    "subHeadline": "Zufälliger Text "
   },
   "menu": {
-    "fleet": "FLOTTE",
-    "language": "SPRACHE",
-    "contact": "KONTAKT"
+    "fleet": "FLOTTE ",
+    "language": "SPRACHE ",
+    "contact": "KONTAKT "
   },
-  "car-preview": {
-    "vehicle": "Fahrzeugname",
-    "consumption": "Treibstoff verbraucht",
-    "km": "Gefahrene km"
+  "main": {
+    "headline": "Unternehmensvorstellung",
+    "introText1": "Dies ist eine absolut großartige Firma. Ich schwöre!!!",
+    "introText2": ""
+  },
+  "carPreview": {
+    "headline": "Unsere Fahrzeugflotte ",
+    "introText": "Wir wählen die besten und effizientesten Autos aus .... bla bla ... bla bla ",
+    "vehicle": "Fahrzeugname ",
+    "consumption": "Treibstoffstanducht ",
+    "km": "Gefahrene km "
+  },
+  "autoComplete": {
+    "search": "Suche...",
+    "noResult": "Keine Einträge gefunden."
+  },
+  "distanceCalculator": {
+    "headline": "Fahrplanrechner ",
+    "introText": "Einige Texte zum Stundenplanrechner. Vielleicht warum und wie alles berechnet wird oder so. ",
+    "start": "Startort ",
+    "destination": "Ziel",
+    "totalCost": "Gesamtkosten:",
+    "basisFee": "Grundgebühr: ",
+    "first4Km": "Erste 4 km Gebühr: ",
+    "after4Km": "Nach 4 km Gebühr: ",
+    "totalDistance": "Gesamtstrecke:",
+    "costFor4Km": "Kosten für die ersten 4 km: ",
+    "costAfter4Km": "Kosten nach den ersten 4 km: ",
+    "showMore": "Zeig mehr",
+    "showLess": "Zeige weniger"
+  },
+  "contactForm": {
+    "submit": "Einreichen",
+    "headline": {
+      "main": "Kontaktiere uns",
+      "pending": "Ihre E-Mail wird gesendet. ",
+      "success": "Ihre E-Mail wurde erfolgreich gesendet.",
+      "error": "Beim Senden Ihrer E-Mail ist ein Fehler aufgetreten. "
+    },
+    "subHeadline": {
+      "main": "Fühlen Sie sich frei, uns eine Zeile unten zu schreiben! ",
+      "pending": "",
+      "success": "Wir werden uns umgehend bei Ihnen melden. ",
+      "error": "Bitte versuchen Sie es später noch einmal oder versuchen Sie es mit einer anderen Methode. "
+    },
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Gib deinen Namen ein",
+        "errorMessage": "Name ist erforderlich!"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Geben Sie eine E-Mail-Adresse ein ",
+        "errorMessage": "Eine gültige E-Mail ist erforderlich! "
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "Telefonnummer eingeben"
+      },
+      "message": {
+        "label": "Botschaft",
+        "placeholder": "Ihr Kommentar...",
+        "errorMessage": "Nachricht ist erforderlich! "
+      }
+    }
+  },
+  "footer": {
+    "aboutUs": {
+      "headline": "Über uns",
+      "text": "Wir sind einer der größten Hersteller von Premiumautos und der weltweit größte Hersteller von Nutzfahrzeugen mit globaler Reichweite. Wir bieten Finanzierung, Leasing, Flottenmanagement, Versicherungen und innovative Mobilitätsdienstleistungen. SEO texte und so. "
+    },
+    "company": {
+      "headline": "Unternehmen",
+      "contact": "Kontakt",
+      "imprint": "Impressum",
+      "consent": "Zustimmung",
+      "conditions": "Bedingungen"
+    },
+    "social": "Sozial"
   }
 }

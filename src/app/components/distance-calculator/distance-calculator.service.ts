@@ -35,16 +35,20 @@ export class DistanceCalculatorService {
     const { basicFee, firstFourKmFee, afterFourKmFee } = calculationBaseData;
     const distanceInKm = Math.ceil(distanceInMeters / 1000);
 
-    let totalCost = basicFee;
-    let costFirstFourKm = 0;
+    let totalCostNum = basicFee;
+    let costFirstFourKmNum = 0;
 
     for (let i = 0; i < distanceInKm; i++) {
       const feePerKm = i < 4 ? firstFourKmFee : afterFourKmFee;
-      totalCost += feePerKm;
+      totalCostNum += feePerKm;
 
-      costFirstFourKm = i + 1 === 4 || (i <= 4 && i + 1 === distanceInKm) ? totalCost : costFirstFourKm;
+      costFirstFourKmNum = i + 1 === 4 || (i <= 4 && i + 1 === distanceInKm) ? totalCostNum : costFirstFourKmNum;
     }
-    const costAfterFourKm = costFirstFourKm !== totalCost ? totalCost - costFirstFourKm : 0;
+    const costAfterFourKmNum = costFirstFourKmNum !== totalCostNum ? totalCostNum - costFirstFourKmNum : 0;
+
+    const totalCost = totalCostNum.toFixed(2);
+    const costFirstFourKm = costFirstFourKmNum.toFixed(2);
+    const costAfterFourKm = costAfterFourKmNum.toFixed(2);
 
     return {
       totalCost,

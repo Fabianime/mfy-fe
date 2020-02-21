@@ -1,77 +1,71 @@
-<!-- Localisation -->
 <a id="contact"></a>
 <div class="contact__container">
   <div class="contact__wrapper">
-    <ng-container *ngIf="dataWasSend; then successfulSendContactForm; else normalContactForm"> </ng-container>
+    <div class="contact__title--container">
+      <div class="contact__title--main">
+        {{ getContactFormHeadline() | async }}
+      </div>
+
+      <div class="contact__title--sub" *ngIf="!!getContactFormSubHeadline()">
+        {{ getContactFormSubHeadline() | async }}
+      </div>
+      <div class="contact__title--sub" *ngIf="emailSendingStatus === SendingEmailProgressStatus.PENDING">
+        <div class="contact__loading-dots">
+          <h1 class="dot one">.</h1>
+          <h1 class="dot two">.</h1>
+          <h1 class="dot three">.</h1>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!dataWasSend" class="contact__form">
+      <app-input
+        [label]="'contactForm.fields.name.label' | translate | Required"
+        [placeholder]="'contactForm.fields.name.placeholder' | translate | Required"
+        [errorMessage]="'contactForm.fields.name.errorMessage' | translate"
+        [componentControl]="fullNameControl"
+      >
+      </app-input>
+
+      <app-input
+        [label]="'contactForm.fields.email.label' | translate | Required"
+        [placeholder]="'contactForm.fields.email.placeholder' | translate | Required"
+        [errorMessage]="'contactForm.fields.email.errorMessage' | translate"
+        [componentControl]="emailControl"
+      >
+      </app-input>
+
+      <app-input
+        [label]="'contactForm.fields.phone.label' | translate"
+        [placeholder]="'contactForm.fields.phone.placeholder' | translate"
+        [componentControl]="phoneNumberControl"
+      >
+      </app-input>
+
+      <div *ngIf="showIncludeCalculationData" class="contact__input--container contact__checkbox--wrapper">
+        <input [formControl]="calcDataControl" id="calcData" type="checkbox" class="contact__checkbox--checkbox" />
+        <svg class="contact__checkbox--icon" aria-hidden="true">
+          <use href="assets/svgs/global.svg#checkMark"></use>
+        </svg>
+        <label class="contact__checkbox--label" for="calcData">Include calculation data</label>
+        <span class="contact__input--focus"></span>
+      </div>
+
+      <app-input
+        [label]="'contactForm.fields.message.label' | translate"
+        [placeholder]="'contactForm.fields.message.placeholder' | translate"
+        [errorMessage]="'contactForm.fields.message.errorMessage' | translate"
+        [inputType]="'textarea'"
+        [componentControl]="messageControl"
+      >
+      </app-input>
+
+      <div class="contact__button--container">
+        <button class="contact__button--button" (click)="sendDataIfValid()">
+          <span>
+            {{ 'contactForm.submit' | translate }}
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-
-<ng-template #successfulSendContactForm>
-  <div class="contact__title--container">
-    <span class="contact__title--main">
-      {{ getEmailSendingStatusHeadline() }}
-    </span>
-
-    <span class="contact__title--sub" *ngIf="isEmailSendingSuccessful === SendingEmailProgressStatus.SUCCESSFUL">
-      We will contact you in a short notice.
-    </span>
-  </div>
-</ng-template>
-
-<ng-template #normalContactForm>
-  <div class="contact__title--container">
-    <span class="contact__title--main">
-      Contact Us
-    </span>
-
-    <span class="contact__title--sub">
-      Feel free to drop us a line below!
-    </span>
-  </div>
-  <div class="contact__form">
-    <app-input
-      [label]="'Full Name:'"
-      [componentControl]="fullNameControl"
-      [placeholder]="'Enter full name'"
-      [errorMessage]="'Name is required!'"
-    >
-    </app-input>
-
-    <app-input
-      [label]="'Email:'"
-      [componentControl]="emailControl"
-      [placeholder]="'Enter email address'"
-      [errorMessage]="'Valid email is required!'"
-    >
-    </app-input>
-
-    <app-input [label]="'Phone:'" [componentControl]="phoneNumberControl" [placeholder]="'Enter phone number'">
-    </app-input>
-
-    <div *ngIf="showIncludeCalculationData" class="contact__input--container contact__checkbox--wrapper">
-      <input [formControl]="calcDataControl" id="calcData" type="checkbox" class="contact__checkbox--checkbox" />
-      <svg class="contact__checkbox--icon" aria-hidden="true">
-        <use href="assets/svgs/global.svg#checkMark"></use>
-      </svg>
-      <label class="contact__checkbox--label" for="calcData">Include calculation data</label>
-      <span class="contact__input--focus"></span>
-    </div>
-
-    <app-input
-      [label]="'Message:'"
-      [componentControl]="messageControl"
-      [placeholder]="'Your Comment...'"
-      [errorMessage]="'Message is required!'"
-      [inputType]="'textarea'"
-    >
-    </app-input>
-
-    <div class="contact__button--container">
-      <button class="contact__button--button" (click)="sendDataIfValid()">
-        <span>
-          Submit
-        </span>
-      </button>
-    </div>
-  </div>
-</ng-template>

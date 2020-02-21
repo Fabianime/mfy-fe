@@ -1,11 +1,92 @@
 {
   "header": {
-    "headline": "MOBILITY FOR YOU",
-    "subHeadline": "TRTRTRTRTRTRT"
+    "headline": "SİZİN İÇİN HAREKETLİLİK ",
+    "subHeadline": "Görüntülenecek bazı rastgele metinler "
   },
   "menu": {
-    "fleet": "FLOTTE",
-    "language": "SPRACHE",
-    "contact": "KONTAKT"
+    "fleet": "FİLO",
+    "language": "DİL",
+    "contact": "İLETİŞİM"
+  },
+  "main": {
+    "headline": "Şirket tanıtımı",
+    "introText1": "Sed lectus mi, eleifend quis congue non, lacinia id quam. Cras porta pellentesque nulla, ac auctor ligula\n    scelerisque non. In vel placerat lacus. Nam pretium vitae purus et laoreet. Aliquam erat volutpat. Pellentesque id\n    volutpat sem, et condimentum nisl. Donec bibendum congue mauris, ac commodo tortor volutpat ac. Donec lobortis lorem\n    nisi, sit amet bibendum lacus vestibulum interdum. Donec mollis ligula at semper iaculis.",
+    "introText2": "Duis et vestibulum turpis. Duis non ultrices quam. Sed volutpat imperdiet sollicitudin. Aliquam erat volutpat. Donec\n    at adipiscing purus. Duis varius metus vitae mattis pellentesque. Etiam tempor urna sed congue vulputate. Nulla\n    neque metus, vulputate a dui ut, suscipit fringilla risus. Suspendisse posuere dignissim vestibulum. Praesent congue\n    vestibulum dolor, quis lobortis libero egestas ac. Sed venenatis bibendum interdum. Curabitur rhoncus urna quis\n    viverra varius. Cras posuere non tortor at volutpat. Suspendisse porta, turpis at ullamcorper imperdiet, felis lacus\n    eleifend sapien, pulvinar elementum ipsum lacus ut elit. Sed ipsum erat, porttitor non malesuada at, interdum at\n    nibh. Mauris ut ornare purus."
+  },
+  "carPreview": {
+    "headline": "Araç filonuz ",
+    "introText": " Praesent commodo elit vel massa gravida lacinia. Maecenas auctor dignissim porttitor. Donec tincidunt mi eget semper\n    bibendum. Morbi quis sagittis sapien. Fusce ut ligula purus. Nulla tristique augue nec lectus lacinia congue. Nunc\n    tempus eros quam, ac sollicitudin mauris vehicula ac. Vivamus pulvinar elit ac risus placerat rutrum.",
+    "vehicle": "Araç adı ",
+    "consumption": "Yakıt tüketimi",
+    "km": "Mesafe"
+  },
+  "autoComplete": {
+    "search": "Arama...",
+    "noResult": "Sonuç bulunamadı."
+  },
+  "distanceCalculator": {
+    "headline": "Tarife hesaplayıcı ",
+    "introText": "Sed lectus mi, eleifend quis congue non, lacinia id quam. Cras porta pellentesque nulla, ac auctor ligula\n    scelerisque non. In vel placerat lacus. Nam pretium vitae purus et laoreet. Aliquam erat volutpat. Pellentesque id\n    volutpat sem, et condimentum nisl. Donec bibendum congue mauris, ac commodo tortor volutpat ac. Donec lobortis lorem\n    nisi, sit amet bibendum lacus vestibulum interdum. Donec mollis ligula at semper iaculis.",
+    "start": "Başlangıç ​​konumu ",
+    "destination": "Hedef",
+    "totalCost": "Toplam tutar:",
+    "basisFee": "Temel ücret: ",
+    "first4Km": "İlk 4 KM ücreti: ",
+    "after4Km": "4 KM ücretinden sonra: ",
+    "totalDistance": "Toplam mesafe:",
+    "costFor4Km": "İlk 4 KM maliyeti: ",
+    "costAfter4Km": "İlk 4 KM'den sonraki maliyet: ",
+    "showMore": "Daha fazla göster",
+    "showLess": "Daha az göster"
+  },
+  "contactForm": {
+    "submit": "Sunmak",
+    "headline": {
+      "main": "Bize Ulaşın",
+      "pending": "E-postanız gönderiliyor. ",
+      "success": "E-postanız başarıyla gönderildi. ",
+      "error": "E-postanız gönderilirken bir hata oluştu. "
+    },
+    "subHeadline": {
+      "main": "Bize aşağıdan bir satır bırakmaktan çekinmeyin! ",
+      "pending": "",
+      "success": "Kısa bir süre içinde sizinle iletişime geçeceğiz. ",
+      "error": "Lütfen daha sonra tekrar deneyin veya farklı bir yöntem deneyin. "
+    },
+    "fields": {
+      "name": {
+        "label": "Adı",
+        "placeholder": "Adınızı giriniz",
+        "errorMessage": "İsim gerekli!"
+      },
+      "email": {
+        "label": "E-posta",
+        "placeholder": "Bir e-posta adresi girin ",
+        "errorMessage": "Geçerli bir e-posta gereklidir!"
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "Telefon numarasını girin "
+      },
+      "message": {
+        "label": "İleti",
+        "placeholder": "Senin yorumun...",
+        "errorMessage": "Mesaj gerekli! "
+      }
+    }
+  },
+  "footer": {
+    "aboutUs": {
+      "headline": "Hakkımızda",
+      "text": "En büyük premium otomobil üreticilerinden biriyiz ve dünyanın en büyük ticari araçlara sahip dünyanın en büyük ticari araç üreticisiyiz. Finansman, leasing, filo yönetimi, sigorta ve yenilikçi hareketlilik hizmetleri sunuyoruz. SEO metin ve benzeri. "
+    },
+    "company": {
+      "headline": "Şirket",
+      "contact": "İletişim",
+      "imprint": "Damga",
+      "consent": "Razı olmak",
+      "conditions": "Koşullar"
+    },
+    "social": "Sosyal"
   }
 }

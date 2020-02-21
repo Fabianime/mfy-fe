@@ -31,16 +31,21 @@
 <div class="navigation-resp">
   <ul class="navigation-resp__main navigation-resp__menu--container">
     <li class="navigation-resp__main--trigger">
-      <a
-        [class.navigation-resp__icon-menu--selected]="responsiveMenuIsExpanded"
+      <div
+        [class.navigation-resp__main--menu-active]="responsiveMenuIsExpanded"
+        [class.navigation-resp__main--menu-not-active]="!responsiveMenuIsExpanded"
         (click)="toggleMenu()"
-        class="navigation-resp__icon-menu"
-      ></a>
+        class="navigation-resp__main--icon"
+      >
+        <span class="navigation-resp__main--icon-strip"></span>
+        <span class="navigation-resp__main--icon-strip"></span>
+        <span class="navigation-resp__main--icon-strip"></span>
+      </div>
       <nav [class.navigation-resp__wrapper--open]="responsiveMenuIsExpanded" class="navigation-resp__wrapper">
         <ul class="navigation-resp__menu navigation-resp__menu--container">
           <li [class.navigation-resp__sub-menu--expanded]="responsiveLanguageIsExpanded">
-            <div class="navigation-resp__menu--icon">
-              <a (click)="toggleLanguage()" appIcon="Arrow-down" [appIconAlignment]="'center'">
+            <div class="navigation-resp__menu--icon" (click)="toggleLanguage()">
+              <a appIcon="Arrow-down" [appIconAlignment]="'center'">
                 {{ 'menu.language' | translate }}
               </a>
             </div>

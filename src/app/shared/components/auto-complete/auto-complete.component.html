@@ -1,4 +1,3 @@
-<!-- localisation -->
 <div class="auto-complete__container">
   <label for="{{ label.trim() }}">{{ label }}</label>
   <div class="auto-complete__container">
@@ -13,15 +12,15 @@
         class="auto-complete__input"
         autocomplete="off"
         id="{{ label.trim() }}"
-        placeholder="Search..."
+        placeholder="{{ 'autoComplete.search' | translate }}"
       />
     </div>
     <div class="auto-complete__items--container">
       <span *ngFor="let option of options" (mousedown)="optionSelected(option)">{{ option?.name }}</span>
       <ng-container *ngIf="!options?.length && isSearchStarted">
-        <span *ngIf="!showLoading && searchParamFormControl?.value?.length" class="auto-complete__no-items"
-          >No result found.</span
-        >
+        <span *ngIf="!showLoading && searchParamFormControl?.value?.length" class="auto-complete__no-items">{{
+          'autoComplete.noResult' | translate
+        }}</span>
         <span *ngIf="showLoading" class="loading">
           <div class="loading__container">
             <div class="loading__wrapper">

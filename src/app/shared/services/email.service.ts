@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ContactData } from '../../components/contact-form/contact-form.component';
+import { ContactData } from '../../components/contact-form/contact-form.model';
 import { CalculationData } from '../../components/distance-calculator/distance-calculator.model';
 
 export interface DataForEmail extends ContactData {

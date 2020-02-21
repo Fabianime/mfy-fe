@@ -8,9 +8,85 @@
     "language": "LANGUAGE",
     "contact": "CONTACT"
   },
-  "car-preview": {
+  "main": {
+    "headline": "Company Introduction",
+    "introText1": "This is a totally awesome company. I swear!!!",
+    "introText2": ""
+  },
+  "carPreview": {
+    "headline": "Our car fleet",
+    "introText": "We select the best and efficient cars.... bla bla... bla bla",
     "vehicle": "Vehicle name",
     "consumption": "Fuel consumption",
     "km": "Distance"
+  },
+  "autoComplete": {
+    "search": "Search...",
+    "noResult": "No result found."
+  },
+  "distanceCalculator": {
+    "headline": "Timetable calculator",
+    "introText": "Some text about the timetable calculator. Maybe why and how all is calculated or something.",
+    "start": "Start location",
+    "destination": "Destination",
+    "totalCost": "Total cost:",
+    "basisFee": "Basis fee:",
+    "first4Km": "First 4 KM fee:",
+    "after4Km": "After 4 KM fee:",
+    "totalDistance": "Total distance:",
+    "costFor4Km": "Cost for first 4 KM:",
+    "costAfter4Km": "Cost after first 4 KM:",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "contactForm": {
+    "submit": "Submit",
+    "headline": {
+      "main": "Contact Us",
+      "pending": "Your email is being send.",
+      "success": "Your email was sent successfully.",
+      "error": "There was an error sending your email."
+    },
+    "subHeadline": {
+      "main": "Feel free to drop us a line below!",
+      "pending": "",
+      "success": "We will contact you in a short notice.",
+      "error": "Please try again later or try a different method."
+    },
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name",
+        "errorMessage": "Name is required!"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter a email address",
+        "errorMessage": "A valid email is required!"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Enter phone number"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your Comment...",
+        "errorMessage": "Message is required!"
+      }
+    }
+  },
+  "footer": {
+    "aboutUs": {
+      "headline": "About us",
+      "text": "We are one of the biggest producers of premium cars and the world's biggest manufacturer of commercial vehicles with a global reach. We provide financing, leasing, fleet management, insurance and innovative mobility services. SEO texte und so."
+    },
+    "company": {
+      "headline": "Company",
+      "contact": "Contact",
+      "imprint": "Imprint",
+      "consent": "Consent",
+      "conditions": "Conditions"
+    },
+    "social": "Social"
   }
 }

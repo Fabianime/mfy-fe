@@ -17,6 +17,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { SlidesComponent } from './components/slide-show/slides.component';
 import { IconDirective } from './directive/icon.directive';
 import { EuroPipe } from './pipe/euro.pipe';
+import { RequiredPipe } from './pipe/required.pipe';
 import { AutoCompleteComponent } from './shared/components/auto-complete/auto-complete.component';
 import { InputComponent } from './shared/components/input/input.component';
 
@@ -35,6 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
     DistanceCalculatorComponent,
     AutoCompleteComponent,
     EuroPipe,
+    RequiredPipe,
     ContactFormComponent,
     InputComponent,
     FooterComponent,

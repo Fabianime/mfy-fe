@@ -1,33 +1,20 @@
-// localisation
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
-export interface ContactData {
-  fullName: string;
-  email: string;
-
-  message?: string;
-  phoneNumber?: string;
-  includeCalculationData?: boolean;
-}
-
-export enum SendingEmailProgressStatus {
-  PENDING = 'pending',
-  SUCCESSFUL = 'successful',
-  ERROR = 'error',
-}
+import { TranslateService } from '@ngx-translate/core';
+import { combineLatest, Observable, of } from 'rxjs';
+import { ContactData, EmailSendingStatus } from './contact-form.model';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
 })
-export class ContactFormComponent {
+export class ContactFormComponent implements OnInit {
   @Input() showIncludeCalculationData = false;
-  @Input() isEmailSendingSuccessful = SendingEmailProgressStatus.PENDING;
+  @Input() emailSendingStatus = EmailSendingStatus.PENDING;
   @Output() sendContactData = new EventEmitter<ContactData>();
 
-  SendingEmailProgressStatus = SendingEmailProgressStatus;
+  SendingEmailProgressStatus = EmailSendingStatus;
 
   dataWasSend = false;
 
@@ -38,6 +25,20 @@ export class ContactFormComponent {
     includeCalculationData: new FormControl(),
     message: new FormControl(''),
   });
+
+  private pendingHeadline = '';
+  private successHeadline = '';
+  private errorHeadline = '';
+
+  private pendingSubHeadline = '';
+  private successSubHeadline = '';
+  private errorSubHeadline = '';
+
+  constructor(private readonly translateService: TranslateService) {}
+
+  ngOnInit() {
+    this.initHeadlines();
+  }
 
   get fullNameControl(): AbstractControl {
     return this.contactFormGroup.get('fullName');
@@ -81,12 +82,54 @@ export class ContactFormComponent {
     return clonedContactData;
   }
 
-  getEmailSendingStatusHeadline() {
-    let eMailHeadline = 'Pending';
-    eMailHeadline =
-      this.isEmailSendingSuccessful === SendingEmailProgressStatus.SUCCESSFUL ? 'Successful' : eMailHeadline;
-    eMailHeadline = this.isEmailSendingSuccessful === SendingEmailProgressStatus.ERROR ? 'Error' : eMailHeadline;
+  getContactFormHeadline(): Observable<string> {
+    if (!this.dataWasSend) {
+      return this.translateService.get('contactForm.headline.main');
+    }
 
-    return eMailHeadline;
+    let eMailHeadline = this.pendingHeadline;
+    eMailHeadline = this.emailSendingStatus === EmailSendingStatus.SUCCESSFUL ? this.successHeadline : eMailHeadline;
+    eMailHeadline = this.emailSendingStatus === EmailSendingStatus.ERROR ? this.errorHeadline : eMailHeadline;
+
+    return of(eMailHeadline);
+  }
+
+  getContactFormSubHeadline(): Observable<string> {
+    if (!this.dataWasSend) {
+      return this.translateService.get('contactForm.subHeadline.main');
+    }
+
+    let eMailSubHeadline = this.pendingSubHeadline;
+
+    eMailSubHeadline =
+      this.emailSendingStatus === EmailSendingStatus.SUCCESSFUL ? this.successSubHeadline : eMailSubHeadline;
+
+    eMailSubHeadline = this.emailSendingStatus === EmailSendingStatus.ERROR ? this.errorSubHeadline : eMailSubHeadline;
+
+    return of(eMailSubHeadline);
+  }
+
+  private initHeadlines() {
+    // init headlines
+    combineLatest(
+      this.translateService.get('contactForm.headline.pending'),
+      this.translateService.get('contactForm.headline.success'),
+      this.translateService.get('contactForm.headline.error')
+    ).subscribe(([pendingHeadline, successHeadline, errorHeadline]) => {
+      this.pendingHeadline = pendingHeadline;
+      this.successHeadline = successHeadline;
+      this.errorHeadline = errorHeadline;
+    });
+
+    // init subHeadlines
+    combineLatest(
+      this.translateService.get('contactForm.subHeadline.pending'),
+      this.translateService.get('contactForm.subHeadline.success'),
+      this.translateService.get('contactForm.subHeadline.error')
+    ).subscribe(([pendingSubHeadline, successSubHeadline, errorSubHeadline]) => {
+      this.pendingSubHeadline = pendingSubHeadline;
+      this.successSubHeadline = successSubHeadline;
+      this.errorSubHeadline = errorSubHeadline;
+    });
   }
 }

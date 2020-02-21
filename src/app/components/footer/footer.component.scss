@@ -18,7 +18,7 @@
   float: left;
   text-align: center;
   box-sizing: border-box;
-  padding: 0px 20px 20px 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .footer .col h1 {
@@ -49,6 +49,9 @@
 .social ul li {
   display: inline-block;
   padding-right: 5px !important;
+  img {
+    width: 32px;
+  }
 }
 
 .footer .col ul li:hover {
@@ -56,7 +59,7 @@
   transition: 0.1s;
 }
 
-.clearfix {
+.clearFix {
   clear: both;
 }
 
@@ -71,7 +74,7 @@
     display: block;
   }
   .social h1 {
-    margin: 0px;
+    margin: 0;
   }
 }
 @media only screen and (max-width: $max-mq3) {

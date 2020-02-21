@@ -8,9 +8,9 @@ export interface AutoCompleteData {
 }
 
 export interface CalculationData {
-  totalCost: number;
-  costFirstFourKm: number;
-  costAfterFourKm: number;
+  totalCost: string;
+  costFirstFourKm: string;
+  costAfterFourKm: string;
   distanceInKm: {
     roundedUp: number;
     exact: number;

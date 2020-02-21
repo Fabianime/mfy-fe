@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
-import { ContactData, SendingEmailProgressStatus } from './components/contact-form/contact-form.component';
+import { ContactData, EmailSendingStatus } from './components/contact-form/contact-form.model';
 import { CalculationData } from './components/distance-calculator/distance-calculator.model';
 import { DataForEmail, EmailService } from './shared/services/email.service';
 
@@ -13,7 +13,7 @@ import { DataForEmail, EmailService } from './shared/services/email.service';
 export class AppComponent {
   scrolled$ = new BehaviorSubject(false);
   calculationData: CalculationData;
-  emailSendingProgress: SendingEmailProgressStatus;
+  emailSendingProgress: EmailSendingStatus;
 
   constructor(private translateService: TranslateService, private readonly emailService: EmailService) {
     this.initI18n();
@@ -31,13 +31,13 @@ export class AppComponent {
 
   sendContactEmail(contactData: ContactData) {
     const dataForEmail: DataForEmail = contactData;
-    this.emailSendingProgress = SendingEmailProgressStatus.PENDING;
+    this.emailSendingProgress = EmailSendingStatus.PENDING;
     if (contactData.includeCalculationData) {
       dataForEmail.calculationData = this.calculationData;
     }
     this.emailService.sendContactEmail(dataForEmail).subscribe(
-      () => (this.emailSendingProgress = SendingEmailProgressStatus.SUCCESSFUL),
-      () => (this.emailSendingProgress = SendingEmailProgressStatus.ERROR)
+      () => (this.emailSendingProgress = EmailSendingStatus.SUCCESSFUL),
+      () => (this.emailSendingProgress = EmailSendingStatus.ERROR)
     );
   }
 

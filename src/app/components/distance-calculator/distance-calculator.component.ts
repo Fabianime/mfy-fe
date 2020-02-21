@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { AutoCompleteOption } from '../../shared/components/auto-complete/auto-complete.component';
 import { CalculationData, DistanceData } from './distance-calculator.model';
 import { DistanceCalculatorService } from './distance-calculator.service';
@@ -17,24 +18,32 @@ export class DistanceCalculatorComponent implements AfterViewInit {
   startLocationOptions: AutoCompleteOption[];
   destinationLocationOptions: AutoCompleteOption[];
 
-  defaultDirectionsUrl = 'https://www.google.com/maps/embed/v1/directions?zoom=8&key=';
+  // ToDo: remove API key
+  defaultDirectionsUrl = 'https://www.google.com/maps/embed/v1/directions?key=AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk';
   currentCalculationData: CalculationData;
 
   showMore = false;
 
-  private selectedOriginId: string;
-  private selectedDestinationId: string;
+  private selectedOriginId = '';
+  private selectedDestinationId = '';
 
-  constructor(private readonly distanceCalculatorService: DistanceCalculatorService) {}
+  private currentLanguage = '';
+
+  constructor(
+    private readonly distanceCalculatorService: DistanceCalculatorService,
+    private readonly translateService: TranslateService
+  ) {}
 
   ngAfterViewInit(): void {
-    // ToDo: Remove Key.
-    const defaultDirectionsParams =
-      'AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk' +
-      '&origin=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc' +
-      '&destination=place_id:ChIJB2mM1AzZmUcRWYaHb2p3xdc';
+    this.currentLanguage = this.getValidLanguageCode(this.translateService.currentLang);
+    this.updateIframeUrl('ChIJB2mM1AzZmUcRWYaHb2p3xdc', 'ChIJB2mM1AzZmUcRWYaHb2p3xdc');
 
-    this.directionMap.nativeElement.src = this.defaultDirectionsUrl + defaultDirectionsParams;
+    this.translateService.onLangChange
+      .pipe(
+        map(({ lang }: LangChangeEvent) => this.getValidLanguageCode(lang)),
+        tap((languageCode: string) => (this.currentLanguage = languageCode))
+      )
+      .subscribe(() => this.updateIframeUrl());
   }
 
   searchStartPosition(searchParam: string) {
@@ -65,12 +74,8 @@ export class DistanceCalculatorComponent implements AfterViewInit {
     if (!this.selectedOriginId || !this.selectedDestinationId) {
       return;
     }
-    this.directionMap.nativeElement.src =
-      this.defaultDirectionsUrl +
-      'AIzaSyDEL2h-pxbQjnymytTP5jqB58mKgfV9eQk&origin=place_id:' +
-      this.selectedOriginId +
-      '&destination=place_id:' +
-      this.selectedDestinationId;
+
+    this.updateIframeUrl();
 
     this.distanceCalculatorService
       .distance(this.selectedOriginId, this.selectedDestinationId)
@@ -87,5 +92,27 @@ export class DistanceCalculatorComponent implements AfterViewInit {
 
   toggleShowMore() {
     this.showMore = !this.showMore;
+  }
+
+  private getValidLanguageCode(currentLang: string) {
+    return currentLang === 'gb' ? 'en' : currentLang;
+  }
+
+  private updateIframeUrl(paramOriginId = '', paramDestinationId = '') {
+    const originId = this.selectedOriginId || paramOriginId;
+    const destinationId = this.selectedDestinationId || paramDestinationId;
+
+    if (!originId || !destinationId) {
+      return;
+    }
+
+    this.directionMap.nativeElement.src =
+      this.defaultDirectionsUrl +
+      '&language=' +
+      this.currentLanguage +
+      '&origin=place_id:' +
+      originId +
+      '&destination=place_id:' +
+      destinationId;
   }
 }

@@ -1,11 +1,9 @@
-<!-- Localisation -->
 <div>
-  <h2>Fahrplan-Rechner</h2>
+  <h2>
+    {{ 'distanceCalculator.headline' | translate }}
+  </h2>
   <p>
-    Sed lectus mi, eleifend quis congue non, lacinia id quam. Cras porta pellentesque nulla, ac auctor ligula
-    scelerisque non. In vel placerat lacus. Nam pretium vitae purus et laoreet. Aliquam erat volutpat. Pellentesque id
-    volutpat sem, et condimentum nisl. Donec bibendum congue mauris, ac commodo tortor volutpat ac. Donec lobortis lorem
-    nisi, sit amet bibendum lacus vestibulum interdum. Donec mollis ligula at semper iaculis.
+    {{ 'distanceCalculator.introText' | translate }}
   </p>
 </div>
 
@@ -15,14 +13,14 @@
     class="destination-calculator__container"
   >
     <app-auto-complete
-      [label]="'Start location'"
+      [label]="'distanceCalculator.start' | translate"
       [options]="startLocationOptions"
       (valueChanges)="searchStartPosition($event)"
       (selected)="selectedStartPosition($event)"
     ></app-auto-complete>
 
     <app-auto-complete
-      [label]="'Destination'"
+      [label]="'distanceCalculator.destination' | translate"
       [options]="destinationLocationOptions"
       (valueChanges)="searchDestinationPosition($event)"
       (selected)="selectedDestinationPosition($event)"
@@ -38,45 +36,49 @@
 
 <ng-template #simpleCalc>
   <div class="destination-calculator__result--item">
-    <span>Total cost:</span>
+    <span>{{ 'distanceCalculator.totalCost' | translate }}</span>
     <span>{{ currentCalculationData?.totalCost | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item-show-more" (click)="toggleShowMore()">
-    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-down">Show more</p>
+    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-down">
+      {{ 'distanceCalculator.showMore' | translate }}
+    </p>
   </div>
 </ng-template>
 
 <ng-template #detailedCalc>
   <div class="destination-calculator__result--item">
-    <span>Basis fee:</span>
+    <span>{{ 'distanceCalculator.basisFee' | translate }}</span>
     <span>{{ '3.5' | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item">
-    <span>First 4 KM fee:</span>
+    <span>{{ 'distanceCalculator.first4Km' | translate }}</span>
     <span>{{ '2.5' | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item">
-    <span>After 4 KM fee:</span>
+    <span>{{ 'distanceCalculator.after4Km' | translate }}</span>
     <span>{{ '2' | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item">
-    <span>Total distance:</span>
-    <span>{{ currentCalculationData?.distanceInKm?.exact }} KM</span>
+    <span>{{ 'distanceCalculator.totalDistance' | translate }}</span>
+    <span> ~ {{ currentCalculationData?.distanceInKm?.roundedUp }} KM</span>
   </div>
   <br />
   <div class="destination-calculator__result--item">
-    <span>Cost for first 4 KM:</span>
+    <span>{{ 'distanceCalculator.costFor4Km' | translate }}</span>
     <span>{{ currentCalculationData?.costFirstFourKm | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item">
-    <span>Cost after first 4 KM:</span>
+    <span>{{ 'distanceCalculator.costAfter4Km' | translate }}</span>
     <span>{{ currentCalculationData?.costAfterFourKm | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item destination-calculator__result--item-highlighted">
-    <span>Total cost:</span>
+    <span>{{ 'distanceCalculator.totalCost' | translate }}</span>
     <span>{{ currentCalculationData?.totalCost | Euro }}</span>
   </div>
   <div class="destination-calculator__result--item-show-more" (click)="toggleShowMore()">
-    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-up">Show less</p>
+    <p [appIconColor]="'lightgrey'" [appIconAlignment]="'center'" appIcon="Arrow-up">
+      {{ 'distanceCalculator.showLess' | translate }}
+    </p>
   </div>
 </ng-template>

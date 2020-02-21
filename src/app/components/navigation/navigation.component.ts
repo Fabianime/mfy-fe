@@ -16,6 +16,7 @@ export class NavigationComponent implements OnInit {
   responsiveLanguageIsExpanded = false;
 
   currentLanguage: string;
+  // localisation?
   languageList = [
     { languageCode: 'gb', language: 'English' },
     { languageCode: 'de', language: 'Deutsch' },
