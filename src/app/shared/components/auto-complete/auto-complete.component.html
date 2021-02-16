@@ -9,6 +9,7 @@
         [formControl]="searchParamFormControl"
         (keydown)="onKeyDown($event)"
         (blur)="onBlur()"
+        (focus)="onFocus()"
         class="auto-complete__input"
         autocomplete="off"
         id="{{ label.trim() }}"

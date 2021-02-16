@@ -23,6 +23,7 @@ export class AutoCompleteComponent implements OnInit, OnChanges {
   showLoading = false;
   isSearchStarted = false;
   private selectedOption: string;
+  private wasFocusLost = false;
 
   ngOnInit() {
     this.searchParamFormControl.valueChanges
@@ -40,6 +41,7 @@ export class AutoCompleteComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['options']) {
       this.showLoading = false;
+      this.options = this.wasFocusLost ? [] : changes['options'].currentValue;
     }
   }
 
@@ -60,7 +62,12 @@ export class AutoCompleteComponent implements OnInit, OnChanges {
   onBlur() {
     this.isSearchStarted = false;
     this.showLoading = false;
+    this.wasFocusLost = true;
     this.options = [];
+  }
+
+  onFocus() {
+    this.wasFocusLost = false;
   }
 
   optionSelected({ id, name }: AutoCompleteOption) {

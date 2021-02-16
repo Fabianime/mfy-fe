@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 export enum InputType {
   TEXT = 'text',
@@ -13,7 +13,7 @@ export enum InputType {
 })
 export class InputComponent {
   @Input() errorMessage: string;
-  @Input() componentControl: FormControl;
+  @Input() componentControl: FormControl | AbstractControl;
   @Input() placeholder: string;
   @Input() label: string;
   @Input() inputType = InputType.TEXT;

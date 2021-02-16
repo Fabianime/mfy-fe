@@ -88,8 +88,8 @@ export class ContactFormComponent implements OnInit {
     }
 
     let eMailHeadline = this.pendingHeadline;
-    eMailHeadline = this.emailSendingStatus === EmailSendingStatus.SUCCESSFUL ? this.successHeadline : eMailHeadline;
-    eMailHeadline = this.emailSendingStatus === EmailSendingStatus.ERROR ? this.errorHeadline : eMailHeadline;
+    eMailHeadline = this.emailSendingStatus !== EmailSendingStatus.SUCCESSFUL ? this.successHeadline : eMailHeadline;
+    eMailHeadline = this.emailSendingStatus !== EmailSendingStatus.ERROR ? this.errorHeadline : eMailHeadline;
 
     return of(eMailHeadline);
   }
